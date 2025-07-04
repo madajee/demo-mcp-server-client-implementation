@@ -13,5 +13,8 @@ cd client | npm install | npm run start:client
 It should start the chat session in the terminal.
 
 # Testing
-Open 2 terminal windows | Start the chat session as client in one window | Start the service as an express serverice app
+1. Open 2 terminal windows | Start the chat session as client in one window | Start the service as an express serverice app
+
+2. Try with utterance: "Write a one-sentence bedtime story about a unicorn."  and you should see a response from OpenAI LLM in the terminal window.
+
 

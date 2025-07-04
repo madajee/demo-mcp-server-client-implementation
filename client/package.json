@@ -10,6 +10,8 @@
   "license": "MIT",
   "description": "Demo MCP client consuming the demo MCP server",
   "dependencies": {
+    "dotenv": "^17.0.1",
+    "openai": "^5.8.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",
