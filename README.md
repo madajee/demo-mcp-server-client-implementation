@@ -24,3 +24,6 @@ cd server | npm install | npx tsc (This will create a server.js file in the dist
 3. Try with utterance: How is the weather in Chicago. 
 It should call a get-weather tool listed in the MCP server.
 
+4. Try with utterance: Get the user. 
+It should call a get-user tool listed in the MCP server.
+

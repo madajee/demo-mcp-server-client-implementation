@@ -11,6 +11,7 @@ const server = new McpServer({
   version: '1.0.0',
 });
 
+
 server.tool(
      'get-weather',
       {
@@ -42,12 +43,39 @@ server.tool(
             content: [
                 {
                 type: 'text',
-                text: JSON.stringify(weatherData, null, 2),
+                text: JSON.stringify(weatherData['current']['temperature_2m'], null, 2),
                 }
             ]
          }
       }
 );
+server.tool('get-user', 
+      {
+      },
+      async () => {
+   const response = await fetch(`https://jsonplaceholder.typicode.com/users/1`);
+    const data = await response.json();
+    //console.log(data);
+     if (data.length === 0) {
+        return {
+            content: [
+            {
+                type: 'text',
+                text: `Data not found.`,
+            }
+            ]
+        }
+        }
+
+        return {
+            content: [
+                {
+                type: 'text',
+                text: JSON.stringify(data , null, 2),
+                }
+            ]
+         }
+});
 
 const transport = new StdioServerTransport();
 //server.connect(transport);

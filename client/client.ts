@@ -115,22 +115,28 @@ function setupOpenAI() {
   return new OpenAI({ apiKey });
 }
 async function setupMcpTools(client: Client) {
-   const mcpTools = await client.listTools();
-   console.log(JSON.stringify(mcpTools));
-    const toolTools: FunctionTool[] = mcpTools.tools.map((tool) => ({
+    const mcpTools = await client.listTools();
+    //console.log(JSON.stringify(mcpTools));
+    const toolTools: FunctionTool[] = mcpTools.tools.map((tool): FunctionTool => {
+  const isEmptyProperties =
+    !tool.inputSchema.properties ||
+    Object.keys(tool.inputSchema.properties).length === 0;
+
+  return {
+    name: tool.name,
     type: 'function',
     strict: true,
-    name: tool.name,
     description: tool.description,
     parameters: {
-      type: 'object',
-      properties: {
-        city: { type: 'string' }
-      },
-      required: ['city'],
-      additionalProperties: false,
-    },
-  }));
+      ...tool.inputSchema,
+      properties: tool.inputSchema.properties || {},
+      additionalProperties: isEmptyProperties
+        ? false
+        : tool.inputSchema.additionalProperties ?? true // default fallback
+    }
+  };
+});
+  //console.log(JSON.stringify(toolTools));
 
   return { tools: toolTools };
 }
