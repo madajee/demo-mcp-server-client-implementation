@@ -1,18 +1,17 @@
 {
-  "name": "client",
+  "name": "mcp-server",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start:client": "node --loader ts-node/esm client.ts"
+    "start:server": "node --loader ts-node/esm server.ts"
   },
   "keywords": [],
   "author": "Maximilian Schwarzmüller | Jeetan Madaan",
   "license": "MIT",
-  "description": "Demo MCP client consuming the demo MCP server",
+  "description": "Demo MCP server serving a tool",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.15.0",
-    "dotenv": "^17.0.1",
-    "openai": "^5.8.2"
+    "zod": "^3.25.74"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",

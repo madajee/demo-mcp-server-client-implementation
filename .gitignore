@@ -1,3 +1,6 @@
+.github
+server/node_modules
+server/dist
 .env
 .vscode
 service/node_modules
