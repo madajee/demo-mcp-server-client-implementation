@@ -4,13 +4,15 @@
   "type": "module",
   "scripts": {
     "start:client": "node --loader ts-node/esm client.ts",
-    "start:geminiclient": "node --loader ts-node/esm gemini-client.ts"
+    "start:geminiclient": "node --loader ts-node/esm gemini-client.ts",
+    "start:anthropicclient": "node --loader ts-node/esm anthropic-client.ts"
   },
   "keywords": [],
   "author": "Maximilian Schwarzmüller | Jeetan Madaan",
   "license": "MIT",
   "description": "Demo MCP client consuming the demo MCP server",
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.56.0",
     "@google/genai": "^1.8.0",
     "@google/generative-ai": "^0.24.1",
     "@modelcontextprotocol/sdk": "^1.15.0",

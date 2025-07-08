@@ -30,4 +30,6 @@ It should call a get-user tool listed in the MCP server.
 # Useful Links
 1. https://platform.openai.com/docs/guides/text?api-mode=responses
 2. https://ai.google.dev/gemini-api/docs/text-generation
+3. https://www.rootstrap.com/blog/how-to-use-google-gemini-with-node-js-and-typescript
+
 
