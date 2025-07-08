@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import dotenv from 'dotenv';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+//import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import type { FunctionTool } from 'openai/resources/responses/responses.mjs';
 
 dotenv.config({ path: "../.env" });
@@ -84,7 +85,8 @@ class ChatHandler {
   async handleChat() {
      if (this.chatHistory.length > 0) {
       const { output_text } = await this.model.responses.create({
-        model: 'gpt-4o-mini',
+        //model: 'gpt-4o-mini',
+        model: 'gpt-3.5-turbo',
         instructions:
           'Based on the provided history, derive a friendly answer or summary (if any of that is needed) or follow-up question.',
         input: this.chatHistory.slice(-3),
@@ -94,7 +96,8 @@ class ChatHandler {
     const prompt = await this.ui.question(this.aiGreetingText + '\n');
     this.chatHistory.push({ role: 'user', content: prompt });
     const result = await this.model.responses.create({
-      model: 'gpt-4o-mini',
+      //model: 'gpt-4o-mini',
+      model: 'gpt-3.5-turbo',
       instructions:
         'You are a helpful, friendly assistant. You can use knowledge-related tools to find information on specific topics or store new knowledge.',
       input: this.chatHistory,
@@ -116,7 +119,7 @@ function setupOpenAI() {
 }
 async function setupMcpTools(client: Client) {
     const mcpTools = await client.listTools();
-    //console.log(JSON.stringify(mcpTools));
+    console.log(JSON.stringify(mcpTools));
     const toolTools: FunctionTool[] = mcpTools.tools.map((tool): FunctionTool => {
   const isEmptyProperties =
     !tool.inputSchema.properties ||
@@ -136,7 +139,7 @@ async function setupMcpTools(client: Client) {
     }
   };
 });
-  //console.log(JSON.stringify(toolTools));
+  console.log(JSON.stringify(toolTools));
 
   return { tools: toolTools };
 }
@@ -147,6 +150,12 @@ async function main() {
             command: 'node',
             args: ['../server/dist/server.js'],
           });
+          // https://www.npmjs.com/package/@modelcontextprotocol/sdk#streamable-http
+          // https://github.com/MuleSoft-AI-Chain-Project/example-mule-apps/blob/master/a2a-ail-demo/mcp-server-demo-crm/pom.xml
+          // const baseUrl = new URL("http://localhost:8081/mcp");
+          // const transport = new StreamableHTTPClientTransport(
+          //     new URL(baseUrl)
+          // );
 
           const client = new Client(
             { name: 'demo-client', version: '1.0.0' },

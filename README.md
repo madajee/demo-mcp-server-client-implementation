@@ -27,3 +27,7 @@ It should call a get-weather tool listed in the MCP server.
 4. Try with utterance: Get the user. 
 It should call a get-user tool listed in the MCP server.
 
+# Useful Links
+1. https://platform.openai.com/docs/guides/text?api-mode=responses
+2. https://ai.google.dev/gemini-api/docs/text-generation
+

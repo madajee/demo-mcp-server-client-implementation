@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start:client": "node --loader ts-node/esm client.ts"
+    "start:client": "node --loader ts-node/esm client.ts",
+    "start:geminiclient": "node --loader ts-node/esm gemini-client.ts"
   },
   "keywords": [],
   "author": "Maximilian Schwarzmüller | Jeetan Madaan",
   "license": "MIT",
   "description": "Demo MCP client consuming the demo MCP server",
   "dependencies": {
+    "@google/genai": "^1.8.0",
+    "@google/generative-ai": "^0.24.1",
     "@modelcontextprotocol/sdk": "^1.15.0",
     "dotenv": "^17.0.1",
     "openai": "^5.8.2"
