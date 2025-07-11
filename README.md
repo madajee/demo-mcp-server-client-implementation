@@ -27,6 +27,15 @@ It should call a get-weather tool listed in the MCP server.
 4. Try with utterance: Get the user. 
 It should call a get-user tool listed in the MCP server.
 
+5. Added @modelcontextprotocol/inspector to the server.
+Go to service folder and npm run start:service
+Go to server folder and npm run debug 
+Tools: get-weather, get-user, store-knowledge
+Existing DB file is populated with MCP-Resource, MCP-Tool resources created with store-knowledge tool.
+Resource Templates: Knowledge-for-topic, greeting
+Resources: MCP-Resource, MCP-Tool
+
+
 # Useful Links
 1. https://platform.openai.com/docs/guides/text?api-mode=responses
 2. https://ai.google.dev/gemini-api/docs/text-generation
